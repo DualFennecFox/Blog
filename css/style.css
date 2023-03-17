@@ -38,7 +38,7 @@
 
 * {
     box-sizing: border-box !important;
-    transition: ease all 0.5s;
+    transition: ease all 0.2s;
     user-select: none;
 }
 
@@ -81,6 +81,22 @@ body {
     overflow-x: hidden;
     display: flex;
 } 
+
+#box {
+    border-radius: 50%;
+    height: 10%;
+    aspect-ratio: 1;
+    position: fixed;
+    left: 2px;
+    bottom: 2px;
+    display: block;
+    text-align: center;
+    z-index: 2;
+    backdrop-filter: blur(20vh);
+    cursor: pointer;
+    opacity: 0.5;
+}
+
 a {
     color: #1f1f1f;
     text-decoration: none !important;
@@ -131,7 +147,6 @@ h6 {
     padding: 0 0 10px 0;
     font-weight: normal;
     line-height: normal;
-    color: #111111;
     margin: 0
 }
 
@@ -336,14 +351,22 @@ button {
     padding-right: 15px;
     padding-left: 15px;
     font-size: 18px;
-    color: #f8f9fa;
+    color: black;
     text-transform: uppercase;
     z-index: 2;
 }
 
+.nav-item > .color-replacement {
+    padding-right: 15px;
+    padding-left: 15px;
+    font-size: 18px;
+    background-color: transparent;
+    text-transform: uppercase;
+}
+
 .navbar-light .navbar-nav .nav-link:focus,
 .navbar-light .navbar-nav .nav-link:hover {
-    color: #f8f9fa;
+    color: gray;
 }
 
 .banner_section {
@@ -632,7 +655,6 @@ button {
     width: 100%;
     float: left;
     font-size: 32px;
-    color: #1a1a1a;
     padding-top: 20px;
     font-weight: bold;
 }
@@ -641,7 +663,6 @@ button {
     width: 100%;
     float: left;
     font-size: 20px;
-    color: #1a1a1a;
     margin: 0px;
 }
 
@@ -694,7 +715,6 @@ button {
     width: 100%;
     float: left;
     font-size: 30px;
-    color: #222222;
     font-weight: bold;
     padding-top: 30px;
 }
@@ -703,7 +723,6 @@ button {
     width: 100%;
     float: left;
     font-size: 16px;
-    color: #1a1a1a;
     margin: 0px;
 }
 
