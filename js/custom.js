@@ -3,10 +3,48 @@
 ---------------------------------------------------------------------*/
 const blob = document.getElementById("blob");
 const box = document.getElementById("box");
-const colorMode = document.getElementsByClassName("color-replacement")
+let colorMode = document.getElementsByClassName("color-replacement");
 const images = document.getElementById("images");
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-let click = 0;
+
+window.onload = () => {
+let cmode = getCookie("dark-mode");
+if (cmode == "") setCookie("dark-mode", "false", 365);
+
+
+if (cmode == "true") {
+    document.body.style.backgroundColor = "#000";
+
+    for (var i = 0; i < colorMode.length; i++) {
+        colorMode[i].style.color = "#fff";
+}
+}
+}
+
+function setCookie(cname, cvalue, exdays) {
+    const d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    
+    let expires = "expires=" + d.toUTCString();
+
+    document.cookie = `${cname}=${cvalue};${expires};path=/`;
+}
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
 
 if (history.scrollRestoration) {
     history.scrollRestoration = 'manual';
@@ -86,16 +124,17 @@ window.onpointerup = () => {
 
 box.onclick = () => {
 	let color = "";
-	if (click == 0) { backgroundColor = "#000"; color = "#fff"; click = 1; }
-	else { backgroundColor = "#fff"; color = "#000"; click = 0; }
+    let mode = getCookie("dark-mode");
+    if (mode == "") setCookie("dark-mode", "false", 365);
+    if (!colorMode) colorMode = document.getElementsByClassName("color-replacement");
+
+	if (mode == "false") { backgroundColor = "#000"; color = "#fff"; setCookie("dark-mode", "true", 365); }
+	else { backgroundColor = "#fff"; color = "#000"; setCookie("dark-mode", "false", 365); }
     
     document.body.style.backgroundColor = backgroundColor;
 
 	for (var i = 0; i < colorMode.length; i++) {
         colorMode[i].style.color = color;
-
-
-
 	}
 }
 
