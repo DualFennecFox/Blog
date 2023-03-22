@@ -92,12 +92,13 @@ window.onmousemove = event => {
         maxDelta = window.innerWidth / 2;
     
         if(!mouseDelta) return;
-        
+
     let percentage = (mouseDelta / maxDelta) * 100,
         nextPercentage = parseFloat(images.dataset.prevPercentage) + percentage;
 
     if (nextPercentage >= 0) nextPercentage = Math.min(nextPercentage, 0);
     if (nextPercentage <= -100) nextPercentage = Math.max(nextPercentage, -100);
+    if (!nextPercentage) nextPercentage = 0;
     images.dataset.percentage = nextPercentage;
 
     images.animate({
