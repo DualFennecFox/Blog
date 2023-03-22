@@ -62,7 +62,15 @@ body {
     font-weight: normal;
     overflow-x: hidden;
 }
-#blob {
+
+.anti-overflow {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.anti-overflow > #blob {
     background-color: black;
     height: 70vh;
     aspect-ratio: 1;
@@ -77,8 +85,6 @@ body {
         rgb(114, 59, 223)
     );
     animation: rotate 20s infinite;
-    overflow: hidden;
-    overflow-x: hidden;
     display: flex;
     z-index: -1;
 } 
