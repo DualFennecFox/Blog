@@ -48,12 +48,13 @@ html {
 }
 
 html, body {
-    max-width: 100vw;
     overflow-x: hidden;
     position: relative;
 }
 
 body {
+    width: 100vw;
+    height: 100%;
     color: black;
     font-size: 14px;
     font-family: Poppins;
@@ -76,10 +77,10 @@ body {
         rgb(114, 59, 223)
     );
     animation: rotate 20s infinite;
-    filter: blur(30vh);
     overflow: hidden;
     overflow-x: hidden;
     display: flex;
+    z-index: -1;
 } 
 
 #box {
@@ -95,6 +96,14 @@ body {
     backdrop-filter: blur(20vh);
     cursor: pointer;
     opacity: 0.5;
+}
+
+#blur {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    backdrop-filter: blur(200px);
 }
 
 a {
@@ -335,10 +344,11 @@ button {
     background-size: 100%;
     background-repeat: no-repeat;
     user-select: none;
+    position: relative;
 }
 
 .header_main {
-    background: linear-gradient(45deg, transparent 46%, #080c50 46%);
+    background: linear-gradient(45deg, transparent 4%, #080c50 46%);
 }
 
 .logo {
@@ -370,11 +380,8 @@ button {
 
 .banner_section {
     width: 100%;
-    background-image: url(../images/banner-img.png);
     height: 700px;
-    background-size: 100%;
     margin-top: 10px;
-    margin-bottom: 390px;
     display: inline-block;
 }
 
@@ -432,7 +439,7 @@ button {
     display: flex;
     gap: 4vmin;
     position: absolute;
-    left:0%;
+    left: 50%;
     top:50%;
     transform:  translate(0%, 50%);
     z-index: 1;
@@ -442,9 +449,9 @@ button {
     width: 40vmin;
     height: 56vmin;
     object-fit: cover;
-    object-position: 0% 0%;
+    object-position: 50% 0%;
     pointer-events: none;
-    border-radius: 25px;
+    border-radius: 20px;
 }
 
 #my_slider a.carousel-control-prev {

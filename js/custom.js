@@ -71,7 +71,7 @@ document.getElementById("welcome").onpointerover = event => {
     }, 30)
 }
 
-window.onpointermove = event => {
+window.onmousemove = event => {
     const { clientX, clientY } = event;
     
     blob.animate({
@@ -86,18 +86,18 @@ window.onpointermove = event => {
             ! navigator.userAgent.match(/iPad/i) &&
             ! navigator.userAgent.match(/Blackberry/i) )
     {
-		images.style.left = "50%";
     if(images.dataset.mouseDownAt === "0") return;
 
     const mouseDelta = parseFloat(images.dataset.mouseDownAt) - event.clientX,
         maxDelta = window.innerWidth / 2;
-
-    const percentage = (mouseDelta / maxDelta) * 100,
+    
+        if(!mouseDelta) return;
+        
+    let percentage = (mouseDelta / maxDelta) * 100,
         nextPercentage = parseFloat(images.dataset.prevPercentage) + percentage;
 
     if (nextPercentage >= 0) nextPercentage = Math.min(nextPercentage, 0);
     if (nextPercentage <= -100) nextPercentage = Math.max(nextPercentage, -100);
-
     images.dataset.percentage = nextPercentage;
 
     images.animate({
@@ -106,18 +106,18 @@ window.onpointermove = event => {
 
 	for(const image of images.getElementsByClassName("image")) {
 		image.animate({
-			objectPosition: `${nextPercentage + 100}% 0%`
+			objectPosition: `${nextPercentage + 100}% 50%`
 		}, { duration:1200, fill: "forwards" })
 	}
 	}
 }
 
-window.onpointerdown = e => {
+window.onmousedown = e => {
     images.dataset.mouseDownAt = e.clientX;
 
 }
 
-window.onpointerup = () => {
+window.onmouseup = () => {
     images.dataset.mouseDownAt = "0";
     images.dataset.prevPercentage = images.dataset.percentage;
 }
