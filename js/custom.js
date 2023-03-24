@@ -10,7 +10,8 @@ const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 window.onload = () => {
 let cmode = getCookie("dark-mode");
 if (cmode == "") setCookie("dark-mode", "false", 365);
-
+if(navigator.userAgent.match(/Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/))
+    {images.style.left = "0%"; blob.parentNode.removeChild(blob); }
 
 if (cmode == "true") {
     document.body.style.backgroundColor = "#000";
@@ -78,14 +79,6 @@ window.onmousemove = event => {
         left: `${clientX}px`,
         top:`${clientY + window.scrollY}px`
     }, { duration: 3000, fill: "forwards" });
-
-	if(! navigator.userAgent.match(/Android/i) &&
-            ! navigator.userAgent.match(/webOS/i) &&
-            ! navigator.userAgent.match(/iPhone/i) &&
-            ! navigator.userAgent.match(/iPod/i) &&
-            ! navigator.userAgent.match(/iPad/i) &&
-            ! navigator.userAgent.match(/Blackberry/i) )
-    {
     if(images.dataset.mouseDownAt === "0") return;
 
     const mouseDelta = parseFloat(images.dataset.mouseDownAt) - event.clientX,
@@ -111,7 +104,6 @@ window.onmousemove = event => {
 		}, { duration:1200, fill: "forwards" })
 	}
 	}
-}
 
 window.onmousedown = e => {
     images.dataset.mouseDownAt = e.clientX;
